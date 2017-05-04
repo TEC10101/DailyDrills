@@ -4,6 +4,8 @@ const listDiv = document.querySelector('.list');
 
 // for rearranging list items
 const listUl = listDiv.querySelector('ul');
+// for storing the 4x <li> items on the default page
+const lis = listUl.children;
 
 // sample to change heading from "things that are purple"
 const descriptionInput = document.querySelector('input.description');
@@ -15,6 +17,30 @@ const addItemInput = document.querySelector('input.addItemInput');
 const addItemButton = document.querySelector('button.addItemButton');
 
 
+// Function to append `Up` `Down` `Remove` buttons to all <li> elems
+function attachListItemButtons (li){
+  let up = document.createElement('button');
+  up.className = 'up';
+  up.textContent = 'Up';
+  li.appendChild(up);
+
+  let down = document.createElement('button');
+  down.className = 'down';
+  down.textContent = 'Down';
+  li.appendChild(down);
+
+  let remove = document.createElement('button');
+  remove.className = 'remove';
+  remove.textContent = 'Remove';
+  li.appendChild(remove);
+};
+
+// Loop through existing hard-coded ul-child elems and process the button adder
+for (let i = 0; i < lis.length; i += 1) {
+  attachListItemButtons(lis[i])
+}
+
+
 // for rearranging list items
 listUl.addEventListener('click', (event) => {
   if (event.target.tagName == 'BUTTON') {
@@ -22,6 +48,23 @@ listUl.addEventListener('click', (event) => {
       let li = event.target.parentNode;
       let ul = li.parentNode;
       ul.removeChild(li);
+
+      /*
+      ** Test to see how to make a button dynamically select the element it's within...
+      **
+      <ul>
+        <li>
+          <p>Text Here</p><button>Highlight Me!</button>
+        </li>
+      </ul>
+      const ul = document.querySelector('ul')[0];
+      ul.addEventListener('click', (e) => {
+        if (e.target.tagName == 'BUTTON') {
+          e.target.previousElementSibling.className = 'highlight';
+        }
+      }); // End Test
+      
+      */
     }
     if (event.target.className == 'up') {
       let li = event.target.parentNode;
@@ -66,9 +109,7 @@ addItemButton.addEventListener('click', () => {
   let ul = document.getElementsByTagName('ul')[0];
   let li = document.createElement('li');
   li.textContent = addItemInput.value;
-  li.innerHTML += '<button class="up">Up</button>';
-  li.innerHTML += '<button class="down">Down</button>';
-  li.innerHTML += '<button class="remove">Remove</button>';
+  attachListItemButtons(li);
   ul.appendChild(li);
   // ...reset the text entry field to [____]
   addItemInput.value = '';
