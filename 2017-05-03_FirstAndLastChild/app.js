@@ -126,8 +126,10 @@ addItemButton.addEventListener('click', () => {
 
 // ^ the addition of my dynamic buttons works perfectly.
 
+/* Treehouse Quiz:
 const section = document.querySelector('section');
 let paragraphs = section.children;
 for (let i = 0; i < paragraphs.length; i += 1) {
     paragraphs[i].style.color = 'blue';
 };
+*/
