@@ -8,7 +8,7 @@ function Playlist() {
 }
 
 Playlist.prototype.add = function(song) {
-  // this keywork works here because it's a prototype for all (instances of) Playlists
+  // `this` keywork works here because it's a prototype for all (instances of) Playlists
   this.songs.push(song);
 };
 
