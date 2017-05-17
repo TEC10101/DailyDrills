@@ -4,7 +4,6 @@ function Playlist() {
   this.songs = [];
   // ...which defaults to not playing/start at beginning
   this.nowPlayingIndex = 0;
-
 }
 
 Playlist.prototype.add = function(song) {

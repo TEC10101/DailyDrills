@@ -8,10 +8,10 @@ const q3 = new Question("Explain Like I'm _____ or ELI_", 5);
 const q4 = new Question("What year is it?", 2017);
 
 //This will add each question to the currentQuestion array
-Quiz.questions.push(q1);
-Quiz.questions.push(q2);
-Quiz.questions.push(q3);
-Quiz.questions.push(q4);
+Program.questions.push(q1);
+Program.questions.push(q2);
+Program.questions.push(q3);
+Program.questions.push(q4);
 
 const quizElement = document.getElementById('question');
 const progressElement = document.getElementById('progress');
