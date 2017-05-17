@@ -4,14 +4,15 @@
 // Constructor function which doesn't have parameters
 function Quiz() {
   this.questions = [];
+  this.answers = [];
   this.currentQuestion = 0;
 };
 
 
 
-Quiz.prototype.renderInElement = function(questionElement, progress, pos) {
-  questionElement.innerHTML = this.questions[pos]['question'];
-  progressElement.innerHTML = "Question " + [pos + 1] + " of " + this.questions.length;
+Quiz.prototype.renderInElement = function(questionElement, progress) {
+  questionElement.innerHTML = this.questions[this.currentQuestion]['question'];
+  progressElement.innerHTML = "Question " + [this.currentQuestion + 1] + " of " + this.questions.length;
 
 
 
