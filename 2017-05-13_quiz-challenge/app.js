@@ -21,20 +21,29 @@ const quizElement = document.getElementById('question');
 const progressElement = document.getElementById('progress');
 const choice0Element = document.getElementById('choice0');
 const choice1Element = document.getElementById('choice1');
+let answerLocation = RandomOrder();
+const answer0 = document.getElementById('guess0');
+const answer1 = document.getElementById('guess1');
+// let randomOther = RandomOther();
 
-Quiz.renderInElement(quizElement, progressElement);
+if (answerLocation === 0){
+  Quiz.renderInElement(quizElement, progressElement, answer0);
+} else {
+  Quiz.renderInElement(quizElement, progressElement, answer1);
+};
 
 
 
-const answer1 = document.getElementById('guess0');
-answer1.onclick = function (){
+
+
+answer0.onclick = function (){
   Quiz.next();
   Quiz.renderInElement(quizElement);
 }
 
 
-const answer2 = document.getElementById('guess1');
-answer2.onclick = function (){
+
+answer1.onclick = function (){
   Quiz.next();
   Quiz.renderInElement(quizElement);
 }

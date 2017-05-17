@@ -10,10 +10,11 @@ function Quiz() {
 
 
 
-Quiz.prototype.renderInElement = function(questionElement, progress) {
+Quiz.prototype.renderInElement = function(questionElement, progress, answerLocation) {
   questionElement.innerHTML = this.questions[this.currentQuestion]['question'];
   progressElement.innerHTML = "Question " + [this.currentQuestion + 1] + " of " + this.questions.length;
-
+  answerLocation.innerHTML = this.answers[this.currentQuestion];
+  
 
 
 //   for(let i = 0; i< this.questions.length; i++) {
