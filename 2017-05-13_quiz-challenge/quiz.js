@@ -25,6 +25,8 @@ Quiz.prototype.next = function () {
 
 Quiz.prototype.done = function (quiz) {
     DrawDone(quiz);
+    quiz.innerHTML += '<h1>Awesome Quiz</h1>';
+    quiz.innerHTML += '<h2 id="question" class="headline-secondary--grouped">Total Correct: ' + Quiz.numberCorrect + '</h2>'
 }
 
 // Creating media.prototype.toHtml with an if clause for the HTML generation (DRY)

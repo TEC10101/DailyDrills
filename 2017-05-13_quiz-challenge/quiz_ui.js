@@ -11,7 +11,9 @@ function RandomOrder () {
 
 
 function DrawTheQuestion () {
-    if (answerLocation === 0){
+  let answerLocation = RandomOrder();
+  //let otherLocation = 1-answerLocation;
+  if (answerLocation === 0){
     // Display the multiple choice one way
     Quiz.renderInElement(quizElement, progressElement, choice0Element, choice1Element);
   } else {
