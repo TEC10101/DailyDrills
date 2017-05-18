@@ -9,12 +9,12 @@ Quiz.prototype.renderInElement = function(questionElement, progress, answerLocat
   questionElement.innerHTML = this.getCurrentQuestion();
   progressElement.innerHTML = "Question " + [this.questionIndex + 1] + " of " + this.questions.length;
   answerLocation.innerHTML = this.getAnswer(this.questionIndex);
-  otherLocation.innerHTML = this.getAnswer((this.questions.length-1)-this.questionIndex);
+  otherLocation.innerHTML = this.getAnswer(RandomAnswer());
 };
 
 Quiz.prototype.next = function () {
-    this.questionIndex++;
-    DrawTheField();
+  this.questionIndex++;
+  DrawTheField();
 };
 
 Quiz.prototype.done = function () {
@@ -29,9 +29,9 @@ Quiz.prototype.done = function () {
 };
 
 Quiz.prototype.getCurrentQuestion = function () {
-    return this.questions[this.questionIndex]['question'];
+  return this.questions[this.questionIndex]['question'];
 };
 
 Quiz.prototype.getAnswer = function (index) {
-    return this.questions[index]['answer'];
+  return this.questions[index]['answer'];
 };

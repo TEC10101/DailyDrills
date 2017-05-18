@@ -2,7 +2,8 @@ const QArray = [
   new Question("How many states are there in USA?", "50"),
   new Question("What color is the sky?", "Blue"),
   new Question("Explain Like I'm ____ or ELI_", "5"),
-  new Question("What year is it?", "2017")
+  new Question("What year is it?", "2017"),
+  new Question("How many legs does a horse have?", "4")
 ];
 
 // Only `var` works, not `let` or `const` (I get already assigned errors)
