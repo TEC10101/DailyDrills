@@ -1,17 +1,12 @@
+const QArray = [
+  new Question("How many states are there in USA?", "50"),
+  new Question("What color is the sky?", "Blue"),
+  new Question("Explain Like I'm ____ or ELI_", "5"),
+  new Question("What year is it?", "2017")
+];
+
 // Only `var` works, not `let` or `const` (I get already assigned errors)
-var Quiz = new Quiz();
-
-// question, answer
-const q1 = new Question("How many states are there in USA?", "50");
-const q2 = new Question("What color is the sky?", "Blue");
-const q3 = new Question("Explain Like I'm _____ or ELI_", "5");
-const q4 = new Question("What year is it?", "2017");
-
-// This will add each question to the `questions` array
-Quiz.questions.push(q1);
-Quiz.questions.push(q2);
-Quiz.questions.push(q3);
-Quiz.questions.push(q4);
+var Quiz = new Quiz(QArray);
 
 const quizElement = document.getElementById('question');
 const progressElement = document.getElementById('progress');

@@ -1,6 +1,6 @@
-// Constructor function which doesn't have parameters
-function Quiz() {
-  this.questions = [];
+// Constructor function which gets passed an array literal of the questions
+function Quiz(questions) {
+  this.questions = questions;
   this.questionIndex = 0;
   this.numberCorrect = 0;
 };
