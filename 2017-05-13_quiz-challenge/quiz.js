@@ -23,8 +23,8 @@ Quiz.prototype.next = function () {
     DrawTheQuestion();
 }
 
-Quiz.prototype.done = function () {
-    DrawDone();
+Quiz.prototype.done = function (quiz) {
+    DrawDone(quiz);
 }
 
 // Creating media.prototype.toHtml with an if clause for the HTML generation (DRY)

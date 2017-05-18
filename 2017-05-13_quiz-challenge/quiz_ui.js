@@ -20,7 +20,12 @@ function DrawTheQuestion () {
   };
 }
 
-function DrawDone () {
-  quizElement = "";
-  Quiz.renderInElement(quizElement)
+function DrawDone (quizElement) {
+  while (quizElement.firstChild) {
+    quizElement.removeChild(quizElement.firstChild);
+  }
+
+//while (myNode.firstChild) {
+//     myNode.removeChild(myNode.firstChild);
+// }
 }
