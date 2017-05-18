@@ -3,7 +3,7 @@ var Quiz = new Quiz();
 
 // question, answer
 const q1 = new Question("How many states are there in USA?", 50);
-const q2 = new Question("What color is the sky?", "blue");
+const q2 = new Question("What color is the sky?", "Blue");
 const q3 = new Question("Explain Like I'm _____ or ELI_", 5);
 const q4 = new Question("What year is it?", 2017);
 
@@ -27,21 +27,18 @@ const answer0 = document.getElementById('guess0');
 const answer1 = document.getElementById('guess1');
 // let randomOther = RandomOther();
 
-if (answerLocation === 0){
-  // Display the multiple choice one way
-  Quiz.renderInElement(quizElement, progressElement, answer0, answer1);
-} else {
-  // ...display it the other way
-  Quiz.renderInElement(quizElement, progressElement, answer1, answer0);
-};
 
 
 
+
+DrawTheQuestion();
 
 
 answer0.onclick = function (){
   // If you answer correctly
-  if (answer0.textContent === Quiz.questions[Quiz.currentQuestion].answer.toString()){
+  if (choice0Element.textContent === Quiz.questions[Quiz.currentQuestion].answer.toString()){
+    Quiz.numberCorrect++;
+    Quiz.next();
     console.log('Yay, testing correct answer');
     // Then it reloads the div #quiz with next question
     // Quiz.renderInElement(quizElement);
@@ -51,11 +48,8 @@ answer0.onclick = function (){
   
   }
 }
-
-
-
 answer1.onclick = function (){
-  if (answer1.textContent === Quiz.questions[Quiz.currentQuestion].answer.toString()){
+  if (choice1Element.textContent === Quiz.questions[Quiz.currentQuestion].answer.toString()){
     console.log('Yay, testing correct answer');
     // Then it reloads the div #quiz with next question
     //Quiz.renderInElement(quizElement);

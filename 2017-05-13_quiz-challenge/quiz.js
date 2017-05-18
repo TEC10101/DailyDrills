@@ -6,22 +6,26 @@ function Quiz() {
   this.questions = [];
   this.answers = [];
   this.currentQuestion = 0;
+  this.numberCorrect = 0;
 };
 
 
 
-Quiz.prototype.renderInElement = function(questionElement, progress, answerLocation) {
+Quiz.prototype.renderInElement = function(questionElement, progress, answerLocation, otherLocation) {
   questionElement.innerHTML = this.questions[this.currentQuestion]['question'];
   progressElement.innerHTML = "Question " + [this.currentQuestion + 1] + " of " + this.questions.length;
   answerLocation.innerHTML = this.answers[this.currentQuestion];
-  
-
-
-//   for(let i = 0; i< this.questions.length; i++) {
-//     questionAsked.innerHTML += this.questions[i].toHTML();
-//   }
+  otherLocation.innerHTML = this.answers[3-this.currentQuestion];
 };
 
+Quiz.prototype.next = function () {
+    this.currentQuestion++;
+    DrawTheQuestion();
+}
+
+Quiz.prototype.done = function () {
+    DrawDone();
+}
 
 // Creating media.prototype.toHtml with an if clause for the HTML generation (DRY)
 Quiz.prototype.toHTML = function() {
