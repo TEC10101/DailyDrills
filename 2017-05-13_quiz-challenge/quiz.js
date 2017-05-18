@@ -5,7 +5,7 @@ function Quiz(questions) {
   this.numberCorrect = 0;
 };
 
-Quiz.prototype.renderInElement = function(questionElement, progress, answerLocation, otherLocation) {
+Quiz.prototype.render = function(questionElement, progress, answerLocation, otherLocation) {
   questionElement.innerHTML = this.getCurrentQuestion();
   progressElement.innerHTML = "Question " + [this.questionIndex + 1] + " of " + this.questions.length;
   answerLocation.innerHTML = this.getAnswer(this.questionIndex);
