@@ -1,54 +1,37 @@
-// Current Score and Current Question... similar to playlist.js
-// Collection of question objs
-
 // Constructor function which doesn't have parameters
 function Quiz() {
   this.questions = [];
-  this.answers = [];
-  this.currentQuestion = 0;
+  this.questionIndex = 0;
   this.numberCorrect = 0;
 };
 
-
-
 Quiz.prototype.renderInElement = function(questionElement, progress, answerLocation, otherLocation) {
-  questionElement.innerHTML = this.questions[this.currentQuestion]['question'];
-  progressElement.innerHTML = "Question " + [this.currentQuestion + 1] + " of " + this.questions.length;
-  answerLocation.innerHTML = this.answers[this.currentQuestion];
-  otherLocation.innerHTML = this.answers[3-this.currentQuestion];
+  questionElement.innerHTML = this.getCurrentQuestion();
+  progressElement.innerHTML = "Question " + [this.questionIndex + 1] + " of " + this.questions.length;
+  answerLocation.innerHTML = this.getAnswer(this.questionIndex);
+  otherLocation.innerHTML = this.getAnswer((this.questions.length-1)-this.questionIndex);
 };
 
 Quiz.prototype.next = function () {
-    this.currentQuestion++;
-    DrawTheQuestion();
-}
+    this.questionIndex++;
+    DrawTheField();
+};
 
-Quiz.prototype.done = function (quiz) {
-    DrawDone(quiz);
-    quiz.innerHTML += '<h1>Awesome Quiz</h1>';
-    quiz.innerHTML += '<h2 id="question" class="headline-secondary--grouped">Total Correct: ' + Quiz.numberCorrect + '</h2>'
-}
+Quiz.prototype.done = function () {
+  let quizField = document.getElementById('quiz');
+  // Clear field
+  while (quizField.firstChild) {
+    quizField.removeChild(quizField.firstChild);
+  }
+  // Draw final summary message
+  quiz.innerHTML += '<h1>Quiz Complete</h1>';
+  quiz.innerHTML += '<h2 id="question" class="headline-secondary--grouped">Total Correct: ' + Quiz.numberCorrect + '</h2>'
+};
 
-// Creating media.prototype.toHtml with an if clause for the HTML generation (DRY)
-Quiz.prototype.toHTML = function() {
-  let htmlString = '<li';
-  if (this.isPlaying === true){
-    htmlString += ' class="current"'
-  }
-  htmlString += '>';
-  htmlString += this.title;
-  console.log(this.type);
-  if (this.type === "song") {
-    htmlString += ' - ';
-    htmlString += this.artist;
-  } else if (this.type === "movie") {
-    htmlString += ' [';
-    htmlString += this.year;
-    htmlString += '] ';
-  }
-  htmlString += '<span class="duration">';
-  htmlString += this.duration; 
-  htmlString += '</span></li>';
-  
-  return htmlString;
+Quiz.prototype.getCurrentQuestion = function () {
+    return this.questions[this.questionIndex]['question'];
+};
+
+Quiz.prototype.getAnswer = function (index) {
+    return this.questions[index]['answer'];
 };

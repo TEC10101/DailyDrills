@@ -7,71 +7,62 @@ const q2 = new Question("What color is the sky?", "Blue");
 const q3 = new Question("Explain Like I'm _____ or ELI_", "5");
 const q4 = new Question("What year is it?", "2017");
 
-//This will add each question to the currentQuestion array
+// This will add each question to the `questions` array
 Quiz.questions.push(q1);
 Quiz.questions.push(q2);
 Quiz.questions.push(q3);
 Quiz.questions.push(q4);
-Quiz.answers.push(q1.answer);
-Quiz.answers.push(q2.answer);
-Quiz.answers.push(q3.answer);
-Quiz.answers.push(q4.answer);
 
 const quizElement = document.getElementById('question');
 const progressElement = document.getElementById('progress');
 const choice0Element = document.getElementById('choice0');
 const choice1Element = document.getElementById('choice1');
-const answer0 = document.getElementById('guess0');
-const answer1 = document.getElementById('guess1');
-const quizField = document.getElementById('quiz');
+const button1 = document.getElementById('guess0');
+const button2 = document.getElementById('guess1');
 
+// Start the quiz
+DrawTheField();
 
-
-
-
-DrawTheQuestion();
-
-
-answer0.onclick = function (){
+button1.onclick = function (){
   // Correct answer
-  if (choice0Element.textContent === Quiz.questions[Quiz.currentQuestion].answer) {
+  if (choice0Element.textContent === Quiz.getAnswer(Quiz.questionIndex)) {
     Quiz.numberCorrect++;
     // Check if more questions
-    if (Quiz.currentQuestion < Quiz.questions.length-1) {
+    if (Quiz.questionIndex < Quiz.questions.length-1) {
       Quiz.next();
     } else { // No more questions
-      Quiz.done(quizField);
+      Quiz.done();
     };
 
   // Wrong answer
   } else {
     // Check if more questions
-    if (Quiz.currentQuestion < Quiz.questions.length-1) {
+    if (Quiz.questionIndex < Quiz.questions.length-1) {
       Quiz.next();
     } else { // No more questions
-      Quiz.done(quizField);
+      Quiz.done();
     };
   }
 };
 
-answer1.onclick = function (){
+button2.onclick = function (){
   // Correct answer
-  if (choice1Element.textContent === Quiz.questions[Quiz.currentQuestion].answer) {
+  if (choice1Element.textContent === Quiz.getAnswer(Quiz.questionIndex)) { //Quiz.questions[Quiz.questionIndex].answer) {
     Quiz.numberCorrect++;
     // Check if more questions
-    if (Quiz.currentQuestion < Quiz.questions.length-1) {
+    if (Quiz.questionIndex < Quiz.questions.length-1) {
       Quiz.next();
     } else { // No more questions
-      Quiz.done(quizField);
+      Quiz.done();
     };
     
   // Wrong answer
   } else {
     // Check if more questions
-    if (Quiz.currentQuestion < Quiz.questions.length-1) {
+    if (Quiz.questionIndex < Quiz.questions.length-1) {
       Quiz.next();
     } else { // No more questions
-      Quiz.done(quizField);
+      Quiz.done();
     };
   }
 };
