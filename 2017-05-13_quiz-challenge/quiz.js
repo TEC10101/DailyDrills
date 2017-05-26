@@ -12,7 +12,7 @@ Quiz.prototype.render = function(questionElement, progress, answerLocation, othe
   otherLocation.innerHTML = this.getAnswer(RandomAnswer());
 };
 
-Quiz.prototype.next = function () {
+Quiz.prototype.next = function() {
   this.questionIndex++;
   DrawTheField();
 };
